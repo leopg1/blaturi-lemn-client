@@ -3,7 +3,7 @@
 export const SITE = {
   brand: "Blaturi de Lemn Premium",
   brandMark: "BLP",
-  tagline: "blaturi din lemn masiv, lucrate la comandă",
+  tagline: "debitări, blaturi live-edge și mese din lemn masiv",
   logo: "/logo-blaturi.svg",
   yearsExperience: 15,
   guaranteeYears: 10,
@@ -17,6 +17,14 @@ export const PHONES = [
   { label: "Principal", value: "0745 332 118", tel: "+40745332118" },
 ] as const;
 
+// Ce facem — afișat scurt în hero, ca să se vadă din prima
+export const HERO_TAGS = [
+  "Debitări la comandă",
+  "Blaturi live-edge",
+  "Mese din lemn masiv",
+  "Mese cu rășină epoxidică",
+] as const;
+
 // Acoperire — orașe în care livrăm, afișate în marquee
 export const COVERAGE_LOCATIONS = [
   "Suceava", "București", "Cluj-Napoca", "Timișoara", "Iași", "Brașov",
@@ -24,169 +32,159 @@ export const COVERAGE_LOCATIONS = [
   "Arad", "Ploiești", "Pitești", "Baia Mare", "Târgu Mureș", "Botoșani",
 ] as const;
 
-// Servicii — 4 categorii de blaturi din lemn masiv
+// Servicii — ce face firma, exact
 export const SERVICES = [
   {
     n: "01",
-    title: "Blaturi de bucătărie",
+    title: "Debitări la comandă",
     body:
-      "Lemn masiv lamelar sau cherestea integrală — stejar, frasin, nuc. Decupaje pentru chiuvetă și plită, finisaj cu ulei sigur la alimente.",
+      "Tăiem bușteni în blaturi groase (slab-uri), la grosimea pe care o vrei. Ai un buștean? Ți-l tăiem și ți-l dăm gata de uscat.",
   },
   {
     n: "02",
-    title: "Blaturi butcher block",
+    title: "Blaturi live-edge",
     body:
-      "Capăt de fibră (end-grain), pentru tocat zilnic. Rezistente, ușor de reîmprospătat, model de șah care nu se uzează la lamă.",
+      "Blaturi din lemn masiv cu margine naturală, uscate și gata de finisat. Vii, le vezi pe viu și alegi bucata care îți place.",
   },
   {
     n: "03",
-    title: "Mese cu blat masiv & live-edge",
+    title: "Mese din lemn masiv",
     body:
-      "Mese de living și dining cu margine naturală (live-edge) sau muchie dreaptă. Picioare din lemn sau metal, la alegere.",
+      "Mese de living sau de bucătărie dintr-o singură bucată de lemn. Picioare de metal sau de lemn — cum vrei tu.",
   },
   {
     n: "04",
-    title: "Blaturi de baie & glafuri",
+    title: "Mese cu rășină epoxidică",
     body:
-      "Blaturi pentru lavoar, polițe, glafuri de fereastră, trepte. La dimensiunea ta, tratate să reziste la umiditate.",
+      "Mese river: rășină turnată între două blaturi de lemn. Tu alegi culoarea rășinii, noi alegem lemnul potrivit.",
   },
 ] as const;
 
-// Lucrări — blaturi livrate (fotografii cu lucrările realizate)
+// Lucrări — blaturi și mese (fotografii reale ale clientului)
 export const LUCRARI = [
   {
     id: 1,
-    name: "Blat insulă & masă, stejar masiv",
-    loc: "Cluj-Napoca",
-    year: "2025",
-    sqm: "stejar · 4 cm",
-    image: "/lucrare-1.jpg",
-    alt: "Blat masiv din stejar pe insulă de bucătărie și masă, finisat cu ulei natural",
+    name: "Blat live-edge cu burl",
+    loc: "Plop",
+    year: "lemn masiv",
+    sqm: "~3 m",
+    image: "/blat-burl.jpg",
+    alt: "Blat mare din lemn masiv de plop, cu burl și margine naturală, finisat",
     featured: true,
   },
   {
     id: 2,
-    name: "Blat bucătărie, frasin lamelar",
-    loc: "Brașov",
-    year: "2025",
-    sqm: "frasin · 3 cm",
-    image: "/lucrare-2.jpg",
-    alt: "Blat de bucătărie din frasin lamelar, bucătărie albă cu accente de lemn deschis",
+    name: "Blat live-edge cu figură creață",
+    loc: "Plop",
+    year: "lemn masiv",
+    sqm: "~2,6 m",
+    image: "/blat-figura.jpg",
+    alt: "Blat înalt din lemn masiv cu figură creață și margine naturală, sprijinit de perete",
     featured: true,
   },
   {
     id: 3,
-    name: "Blat insulă cu chiuvetă, stejar",
-    loc: "București",
-    year: "2025",
-    sqm: "stejar · 4 cm",
-    image: "/lucrare-3.jpg",
-    alt: "Blat de insulă din stejar cu decupaj pentru chiuvetă și baterie",
+    name: "Pereche de blaturi pentru mese",
+    loc: "Plop",
+    year: "lemn masiv",
+    sqm: "2 buc",
+    image: "/blaturi-pereche-1.jpg",
+    alt: "Două blaturi live-edge din lemn masiv, unul cu burl, sprijinite de perete",
   },
   {
     id: 4,
-    name: "Blat bucătărie & tocător, stejar uleiat",
-    loc: "Suceava",
-    year: "2024",
-    sqm: "stejar · 3,8 cm",
-    image: "/lucrare-4.jpg",
-    alt: "Blat de bucătărie din stejar uleiat, lumină caldă și tocător de lemn",
+    name: "Blaturi gata de finisat",
+    loc: "Plop",
+    year: "lemn masiv",
+    sqm: "2 buc",
+    image: "/blaturi-pereche-2.jpg",
+    alt: "Pereche de blaturi din lemn masiv cu margine naturală, pregătite pentru finisare",
   },
 ] as const;
 
-// Atelier — fotografii reale din timpul lucrului (de la scândură la blat finisat)
+// Atelier — de la buștean la blat (fotografii reale)
 export const ATELIER = [
   {
-    image: "/atelier-3.jpg",
-    title: "Lemn selectat",
-    body: "Stejar, frasin, nuc",
+    image: "/atelier-bustean.jpg",
+    title: "Bușteanul",
+    body: "De aici pornește totul",
   },
   {
-    image: "/atelier-2.jpg",
-    title: "Frezare",
-    body: "Profil curat pe muchie",
-  },
-  {
-    image: "/atelier-1.jpg",
-    title: "Șlefuire",
-    body: "Finisaj fin, la mână",
-  },
-  {
-    image: "/atelier-4.jpg",
-    title: "Atelier propriu",
-    body: "Totul sub același acoperiș",
+    image: "/atelier-slab.jpg",
+    title: "Tăiat în blat",
+    body: "Slab gros, proaspăt debitat",
   },
 ] as const;
 
 // De ce noi — 4 dovezi
 export const DOVEZI = [
-  { num: "15", unit: "ani", label: "Lucrăm lemnul, zi de zi" },
-  { num: "100%", unit: "", label: "Lemn masiv — zero pal sau MDF" },
-  { num: "3", unit: "esențe", label: "Stejar, frasin și nuc, la alegere" },
-  { num: "10", unit: "ani", label: "Garanție scrisă pe blat" },
+  { num: "15", unit: "ani", label: "De când tăiem și lucrăm lemn" },
+  { num: "100%", unit: "", label: "Lemn masiv — fără pal, fără MDF" },
+  { num: "4", unit: "servicii", label: "Debitări · blaturi · mese · rășină" },
+  { num: "10", unit: "ani", label: "Garanție scrisă pe lucrare" },
 ] as const;
 
-// Proces — 5 pași (limbaj simplu, voce de meseriaș)
+// Proces — 5 pași, limbaj simplu
 export const PROCES = [
   {
     n: "01",
     t: "Ne spui ce vrei",
-    b: "Dimensiuni, esența lemnului, finisaj. Trimite o poză sau o schiță pe WhatsApp — îți spun pe loc dacă se poate și cam pe ce preț."
+    b: "Un blat, o masă, sau ai un buștean de tăiat? Sună sau trimite o poză pe WhatsApp. Îți spun pe loc dacă se poate și cam cât costă."
   },
   {
     n: "02",
-    t: "Alegem lemnul împreună",
-    b: "Stejar, frasin sau nuc. Îți arăt scânduri reale, cu noduri și fibră, ca să știi exact cum o să arate blatul tău — nu poze de pe net."
+    t: "Vii și alegi lemnul",
+    b: "Treci pe la atelier și vezi blaturile pe viu. Pui mâna pe ele, alegi bucata care îți place. Lemnul arată altfel în realitate decât în poză."
   },
   {
     n: "03",
-    t: "Ofertă scrisă, fermă",
-    b: "Primești pe hârtie esența, grosimea, finisajul, dimensiunile și termenul. Prețul de pe ofertă e prețul pe care îl plătești la livrare."
+    t: "Primești prețul pe hârtie",
+    b: "Îți scriu clar: ce lemn, ce dimensiuni, ce finisaj, cât costă și până când e gata. Cât scrie pe ofertă, atât plătești."
   },
   {
     n: "04",
-    t: "Lucrăm blatul în atelier",
-    b: "Croit, încleiat, calibrat, șlefuit și uleiat la noi în atelier. Îți trimit poze din timpul lucrului ca să vezi cum prinde formă."
+    t: "Lucrăm",
+    b: "Debităm, uscăm, finisăm — sau turnăm rășina, dacă e masă cu epoxi. Îți trimit poze pe parcurs, ca să vezi cum iese."
   },
   {
     n: "05",
-    t: "Livrăm și montăm",
-    b: "Ambalat cu grijă și livrat în toată țara. Montaj la tine acasă, dacă vrei. Garanție scrisă pe finisaj — nu vorbe, hârtie."
+    t: "Livrăm la tine",
+    b: "Ambalăm bine și livrăm oriunde în țară. Dacă vrei, venim și montăm. Primești garanție scrisă pe lucrare."
   },
 ] as const;
 
-// FAQ — întrebări des puse, răspunsuri scurte și directe
+// FAQ — întrebări simple, răspunsuri scurte
 export const FAQ = [
   {
-    q: "Cât costă un blat din lemn masiv?",
-    a: "Depinde de esență, grosime și dimensiuni. Un blat de bucătărie din stejar lamelar de 4 cm, uleiat, pornește în jur de 1.200 lei/m². Frasinul e similar, nucul mai scump. Trimite cotele, primești ofertă exactă — estimarea e gratuită.",
+    q: "Ce faceți, mai exact?",
+    a: "Patru lucruri: debitări (tăiem bușteni în blaturi), vindem blaturi live-edge gata de finisat, facem mese din lemn masiv și facem mese cu rășină epoxidică (river). Tot ce ține de lemn masiv și blaturi.",
   },
   {
-    q: "Ce esențe de lemn folosiți?",
-    a: "Stejar, frasin și nuc european, lemn masiv uscat corect, la 8–10% umiditate. Pentru alte esențe (paltin, cireș) — întreabă, de obicei se poate aduce la comandă.",
+    q: "Ce înseamnă blat live-edge?",
+    a: "E un blat la care lăsăm marginea naturală a lemnului, așa cum a fost trunchiul — nu o tăiem dreaptă. Așa fiecare blat e unic. Se folosește la mese, birouri, blaturi de bucătărie.",
   },
   {
-    q: "Cât durează până primesc blatul?",
-    a: "De obicei 2–3 săptămâni de la confirmarea ofertei și a avansului. În sezon plin poate ajunge la 4. Termenul exact e scris în ofertă, nu îl aflu pe parcurs.",
+    q: "Pot veni cu bușteanul meu să-l tăiați?",
+    a: "Da. Adu bușteanul la atelier, îl tăiem în blaturi la grosimea pe care o vrei și ți-l dai gata de uscat. Îți spun dinainte câte blaturi scot din el.",
   },
   {
-    q: "Cu ce se finisează blatul? Pot tăia direct pe el?",
-    a: "Finisez cu ulei-ceară natural, sigur la contactul cu alimentele. Pe blat poți tăia, dar îți recomand un tocător ca să protejezi lama. Se reîmprospătează cu ulei o dată pe an — îți dau eu kitul și îți arăt cum.",
+    q: "Cât costă un blat sau o masă?",
+    a: "Depinde de mărime, de esența lemnului și de finisaj. Un blat live-edge pornește de la câteva sute de lei, o masă cu rășină costă mai mult. Spune-mi ce vrei și îți dau un preț clar, gratuit.",
+  },
+  {
+    q: "Faceți mese cu rășină (epoxi)?",
+    a: "Da. Punem rășină între două blaturi de lemn și iese o masă river, cu un râu colorat pe mijloc. Tu alegi culoarea. Sunt mesele care arată cel mai spectaculos.",
+  },
+  {
+    q: "Cât durează până e gata?",
+    a: "Un blat gata de finisat ți-l dau repede. O masă din lemn masiv durează 2–3 săptămâni. O masă cu rășină mai mult, pentru că rășina are nevoie de timp să se întărească. Termenul exact ți-l scriu în ofertă.",
   },
   {
     q: "Livrați în toată țara?",
-    a: "Da. Ambalez blatul în folie și colțare și îl trimit prin curier de marfă oriunde în România. Pentru blaturi mari sau montaj la fața locului, venim noi cu mașina.",
-  },
-  {
-    q: "Faceți și blaturi la dimensiuni neobișnuite sau live-edge?",
-    a: "Da — asta facem cel mai des. Blaturi cu margine naturală (live-edge), colțuri, decupaje pentru chiuvetă și plită, găuri pentru baterie. Trimite schița cu cotele și mă ocup eu de rest.",
-  },
-  {
-    q: "Cum se face plata?",
-    a: "50% avans la confirmarea comenzii — cu banii ăștia cumpăr lemnul și pornesc lucrarea. 50% la livrare, după ce vezi blatul gata. Factură și contract la fiecare comandă.",
+    a: "Da. Ambalăm blatul sau masa cu grijă și trimitem prin curier oriunde în România. Pentru piese mari, venim noi cu mașina.",
   },
   {
     q: "Pot veni să văd atelierul?",
-    a: "Sigur. Suntem în Suceava. Sună înainte să te programez și îți arăt scânduri, blaturi în lucru și mostre de finisaj. Cel mai bine alegi lemnul când îl vezi pe viu.",
+    a: "Sigur. Suntem în Suceava. Sună înainte să te aștept și îți arăt blaturile pe care le am acum. Cel mai bine alegi lemnul când îl vezi pe viu.",
   },
 ] as const;

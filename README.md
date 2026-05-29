@@ -1,8 +1,8 @@
 # Blaturi de Lemn Premium — site one-page
 
-Site comercial pentru o firmă care produce blaturi din lemn masiv la comandă:
-blaturi de bucătărie, blaturi butcher block, mese cu blat masiv / live-edge și
-blaturi de baie. Esențe: stejar, frasin, nuc. Atelier în Bucovina, livrare în toată România.
+Site comercial pentru o firmă care lucrează lemn masiv la comandă: **debitări**
+(taie bușteni în blaturi), **blaturi live-edge**, **mese din lemn masiv** și
+**mese cu rășină epoxidică (river)**. Atelier în Bucovina, livrare în toată România.
 
 **Stack:** Astro 5 · Tailwind v4 · TypeScript · static
 
@@ -19,12 +19,12 @@ npm run preview      # servește dist/ pentru verificare
 
 | # | Secțiune | Ce conține |
 |---|---|---|
-| — | **Hero** | Foto din atelier pe tot ecranul, telefon gigant gold, CTA „Sună-ne" + „Vezi lucrări" |
-| 02 | **Lucrări** | Galerie cu 4 blaturi livrate (poze reale ale clientului) |
-| 03 | **Atelier** | 4 fotografii verticale din procesul de producție (lemn → frezare → șlefuire → atelier) |
-| 04 | **Servicii** | 4 tile-uri: blaturi bucătărie · butcher block · mese masiv/live-edge · blaturi baie |
-| 05 | **De ce noi** | 4 dovezi: 15 ani · 100% lemn masiv · 3 esențe · 10 ani garanție |
-| 06 | **Cum lucrăm** | 5 pași: ne spui → alegem lemnul → ofertă → lucrăm în atelier → livrăm/montăm |
+| — | **Hero** | Foto blat pe tot ecranul + cele 4 servicii ca „chips" gold (sar în ochi), telefon gigant, CTA |
+| 02 | **Blaturile noastre** | Galerie cu 4 blaturi/mese (poze reale ale clientului) |
+| 03 | **Din pădure în atelier** | 2 fotografii: bușteanul întreg + slab-ul proaspăt debitat |
+| 04 | **Ce facem** | 4 tile-uri: debitări · blaturi live-edge · mese lemn masiv · mese cu rășină |
+| 05 | **De ce noi** | 4 dovezi: 15 ani · 100% lemn masiv · 4 servicii · 10 ani garanție |
+| 06 | **Cum lucrăm** | 5 pași: ne spui → vii și alegi lemnul → ofertă → lucrăm → livrăm |
 | 07 | **Unde livrăm** | Marquee cu 18 orașe din toată țara |
 | 08 | **Întrebări** | FAQ cu 8 răspunsuri (accordion) |
 | 09 | **Contact** | Telefon mare + program + info |
@@ -53,37 +53,42 @@ export const PHONES = [
 ```
 > Numărul actual este un **placeholder** — înlocuiește-l cu cel al clientului.
 
-### 3. Lucrări (4 blaturi cu poze reale)
+### 3. Servicii (ce face firma)
+```ts
+export const SERVICES = [
+  { n: "01", title: "Debitări la comandă", body: "..." },
+  { n: "02", title: "Blaturi live-edge", body: "..." },
+  { n: "03", title: "Mese din lemn masiv", body: "..." },
+  { n: "04", title: "Mese cu rășină epoxidică", body: "..." },
+];
+```
+Aceleași 4 titluri apar și ca „chips" în hero (`HERO_TAGS`).
+
+### 4. Blaturi (galeria de poze reale)
 ```ts
 export const LUCRARI = [
-  { id: 1, name: "Blat insulă & masă, stejar masiv", loc: "Cluj-Napoca",
-    year: "2025", sqm: "stejar · 4 cm", image: "/lucrare-1.jpg", alt: "...", featured: true },
+  { id: 1, name: "Blat live-edge cu burl", loc: "Plop",
+    year: "lemn masiv", sqm: "~3 m", image: "/blat-burl.jpg", alt: "...", featured: true },
   ...
+];
+export const ATELIER = [
+  { image: "/atelier-bustean.jpg", title: "Bușteanul", body: "De aici pornește totul" },
+  { image: "/atelier-slab.jpg",    title: "Tăiat în blat", body: "Slab gros, proaspăt debitat" },
 ];
 ```
 Pozele sunt în `public/`. Adaugi un fișier nou acolo → referezi calea `/numefisier.jpg` în config.
 
-### 4. Atelier (4 fotografii din producție)
-```ts
-export const ATELIER = [
-  { image: "/atelier-1.jpg", title: "Șlefuire", body: "Finisaj fin, la mână" },
-  ...
-];
-```
-Recomandat: fotografii **verticale** (9:16), sub 200KB.
-
-### 5. Servicii, dovezi, proces, FAQ, acoperire
+### 5. Dovezi, proces, FAQ, acoperire
 Toate sunt array-uri în config. Editezi textul → salvezi → `npm run dev` reîncarcă.
 
 ## Imagini
 
-Toate fotografiile actuale (hero, lucrări, atelier) sunt de pe [Pexels](https://www.pexels.com/)
-(licență liberă, uz comercial fără atribuire). Ele sunt **placeholdere** — se înlocuiesc cu
-fotografii reale ale blaturilor și atelierului clientului:
+Fotografiile actuale sunt **poze reale ale clientului** (blaturile și bușteanul lui).
+Pentru a adăuga sau înlocui:
 
-1. Pune noua poză în `public/` (ex: `public/lucrare-1.jpg`, `public/hero-blat.jpg`).
-2. Recomandare: hero 1920×1080+ sub 500KB, lucrări 1400px sub 300KB, atelier vertical sub 200KB
-   (optimizează cu [squoosh.app](https://squoosh.app/)).
+1. Pune noua poză în `public/` și referează calea în `src/config.ts`.
+2. Recomandare: hero/blaturi sub ~400KB, optimizează cu [squoosh.app](https://squoosh.app/).
+   Pozele de telefon (1200×1600) merg foarte bine așa cum sunt.
 
 ## Logo & favicon
 
@@ -112,9 +117,9 @@ src/
   pages/index.astro          ← single page, asamblează componente
   components/
     Nav.astro                ← header fix, transparent peste hero, solid la scroll
-    Hero.astro               ← foto cover + CTA telefon
-    Lucrari.astro            ← 4 blaturi livrate
-    Atelier.astro            ← 4 fotografii verticale din producție
+    Hero.astro               ← foto cover + chips servicii + CTA telefon
+    Lucrari.astro            ← 4 blaturi (galerie)
+    Atelier.astro            ← 2 foto: buștean + slab debitat
     Servicii.astro           ← 4 tile-uri cu icoane
     DeCeNoi.astro            ← 4 dovezi
     Proces.astro             ← 5 pași
@@ -128,9 +133,10 @@ src/
 public/
   logo-blaturi.svg           ← logo (înlocuibil)
   favicon.svg
-  hero-blat.jpg              ← cover hero
-  lucrare-1.jpg → lucrare-4.jpg  ← 4 blaturi livrate
-  atelier-1.jpg → atelier-4.jpg  ← 4 fotografii din atelier
+  blat-burl.jpg              ← cover hero + blat featured
+  blat-figura.jpg            ← blat featured
+  blaturi-pereche-1.jpg, blaturi-pereche-2.jpg  ← blaturi în galerie
+  atelier-bustean.jpg, atelier-slab.jpg         ← buștean + slab debitat
 vercel.json                  ← config deploy + cache headers
 ```
 

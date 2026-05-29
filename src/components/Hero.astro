@@ -1,5 +1,5 @@
 ---
-import { PHONES } from "../config";
+import { PHONES, HERO_TAGS } from "../config";
 import PhoneIcon from "./PhoneIcon.astro";
 const primary = PHONES[0];
 ---
@@ -11,7 +11,7 @@ const primary = PHONES[0];
   <!-- Background photo with subtle scale-in -->
   <div class="absolute inset-0 -z-10 hero-bg">
     <img
-      src="/hero-blat.jpg"
+      src="/blat-burl.jpg"
       alt=""
       class="h-full w-full object-cover"
       loading="eager"
@@ -28,17 +28,27 @@ const primary = PHONES[0];
 
   <div class="container-base w-full pt-24 md:pt-28 lg:pt-32 pb-20 md:pb-24 lg:pb-28">
     <!-- H1 -->
-    <h1 class="hero-h1 text-display-xl max-w-[14ch] md:max-w-[18ch] text-[var(--color-paper)]" style="color: var(--color-paper);">
-      Blaturi din lemn masiv,
-      <span class="italic text-[var(--color-gold)]">lucrate la comandă</span>.
+    <h1 class="hero-h1 text-display-xl max-w-[15ch] md:max-w-[20ch] text-[var(--color-paper)]" style="color: var(--color-paper);">
+      Blaturi și mese
+      <span class="italic text-[var(--color-gold)]">din lemn masiv</span>.
     </h1>
 
     <!-- Lead — short, plain Romanian -->
-    <p class="hero-lead mt-6 md:mt-8 text-lg md:text-xl text-[var(--color-paper)]/90 max-w-[58ch] leading-relaxed">
-      Stejar, frasin și nuc, uscat și lucrat în atelierul nostru. Blaturi de bucătărie,
-      mese live-edge și blaturi de baie — la dimensiunea ta, finisate cu ulei natural.
-      <span class="text-[var(--color-paper)] font-medium">Livrăm în toată România.</span>
+    <p class="hero-lead mt-6 md:mt-8 text-lg md:text-xl text-[var(--color-paper)]/90 max-w-[56ch] leading-relaxed">
+      Tăiem bușteni în blaturi, vindem blaturi live-edge gata de finisat și facem
+      mese din lemn masiv și mese cu rășină.
+      <span class="text-[var(--color-paper)] font-medium">La dimensiunea ta. Livrăm în toată țara.</span>
     </p>
+
+    <!-- Ce facem — chips care sar în ochi -->
+    <ul class="hero-tags mt-7 md:mt-8 flex flex-wrap gap-2.5 md:gap-3" aria-label="Ce facem">
+      {HERO_TAGS.map((t) => (
+        <li class="inline-flex items-center gap-2 rounded-full border border-[var(--color-gold)]/55 bg-[var(--color-forest-deep)]/40 px-4 py-2 text-sm md:text-base font-medium text-[var(--color-paper)] backdrop-blur-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-gold)]" aria-hidden="true"></span>
+          {t}
+        </li>
+      ))}
+    </ul>
 
     <!-- CTAs -->
     <div class="hero-cta mt-8 md:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -86,14 +96,15 @@ const primary = PHONES[0];
     @keyframes hero-zoom {
       to { transform: scale(1); }
     }
-    .hero-h1, .hero-lead, .hero-cta, .hero-scroll {
+    .hero-h1, .hero-lead, .hero-tags, .hero-cta, .hero-scroll {
       opacity: 0;
       transform: translateY(24px);
       animation: hero-rise 900ms var(--ease-out-expo) forwards;
     }
     .hero-h1     { animation-delay: 200ms; }
     .hero-lead   { animation-delay: 380ms; }
-    .hero-cta    { animation-delay: 540ms; }
+    .hero-tags   { animation-delay: 500ms; }
+    .hero-cta    { animation-delay: 640ms; }
     .hero-scroll { animation-delay: 900ms; }
     @keyframes hero-rise {
       to { opacity: 1; transform: translateY(0); }
@@ -109,7 +120,7 @@ const primary = PHONES[0];
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-bg img,
-      .hero-h1, .hero-lead, .hero-cta, .hero-scroll,
+      .hero-h1, .hero-lead, .hero-tags, .hero-cta, .hero-scroll,
       .hero-scroll-line {
         animation: none !important;
         opacity: 1;

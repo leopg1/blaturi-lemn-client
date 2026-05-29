@@ -1,13 +1,13 @@
 ---
 import { SERVICES } from "../config";
 
-// Lucide-style icons inline. Stroke neutral, accent applied per-tile.
-// 01 blat bucătărie cu chiuvetă · 02 butcher block (end-grain) · 03 masă · 04 glafuri/polițe
+// Lucide-style icons inline. Stroke, accent applied per-tile.
+// 01 debitare (buștean tăiat în slab-uri) · 02 blat live-edge · 03 masă · 04 masă cu rășină (river)
 const ICONS: Record<string, string> = {
-  "01": `<rect x="3" y="8" width="18" height="4" rx="1" /><path d="M5 12v8M19 12v8" /><circle cx="12" cy="10" r="1.1" />`,
-  "02": `<rect x="4" y="4" width="16" height="16" rx="1.5" /><path d="M4 9.3h16M4 14.6h16M9.3 4v16M14.6 4v16" />`,
-  "03": `<path d="M3 8h18l-1.5 2.5H4.5L3 8Z" /><path d="M6 10.5V20M18 10.5V20" />`,
-  "04": `<rect x="3" y="6" width="18" height="3.5" rx="1" /><rect x="3" y="14.5" width="18" height="3.5" rx="1" />`,
+  "01": `<circle cx="12" cy="12" r="8.5" /><path d="M4 9.5h16M4 14.5h16" />`,
+  "02": `<path d="M5 6c-1.2 1.5-1.2 4 0 6s1.2 4 0 6" /><path d="M19 6c1.2 1.5 1.2 4 0 6s-1.2 4 0 6" /><path d="M5 6h14M5 18h14" />`,
+  "03": `<rect x="3" y="7" width="18" height="3" rx="1" /><path d="M6 10v9M18 10v9" />`,
+  "04": `<path d="M4 4v16M20 4v16" /><path d="M10 4c1.6 3-1.6 5 0 8s-1.6 5 0 8M14 4c-1.6 3 1.6 5 0 8s1.6 5 0 8" />`,
 };
 ---
 
@@ -17,14 +17,14 @@ const ICONS: Record<string, string> = {
       <div class="lg:col-span-6 reveal-heading">
         <div class="text-eyebrow mb-3">04 &mdash; Ce facem</div>
         <h2 class="text-display-l">
-          Patru categorii. <span class="italic text-[var(--color-forest)]">Un singur standard.</span>
+          Patru lucruri. <span class="italic text-[var(--color-forest)]">Toate din lemn masiv.</span>
         </h2>
       </div>
       <div class="lg:col-span-5 lg:col-start-8 max-w-[58ch] reveal" style="transition-delay: 150ms;">
         <p class="text-lg text-[var(--color-ink-2)] leading-relaxed">
-          Nu facem mobilă întreagă și nu vindem pal. Facem un singur lucru —
-          blaturi din lemn masiv — și îl facem bine.
-          <span class="text-[var(--color-ink)]">Restul, recomandăm pe altcineva.</span>
+          Nu vindem pal și nu facem mobilă la fabrică. Lucrăm doar lemn masiv —
+          de la buștean până la masa finită.
+          <span class="text-[var(--color-ink)]">Spune-ne ce ai nevoie.</span>
         </p>
       </div>
     </div>
