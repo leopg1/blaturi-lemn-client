@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 88" role="img" aria-label="Blaturi de Lemn Premium">
+  <!-- Emblem: trei blaturi de lemn stivuite -->
+  <g>
+    <rect x="11" y="16" width="50" height="14" rx="4" fill="#C79A45" />
+    <rect x="4"  y="37" width="64" height="14" rx="4" fill="#23402F" />
+    <rect x="15" y="58" width="42" height="14" rx="4" fill="#3A5C46" />
+  </g>
+  <!-- Wordmark -->
+  <text x="84" y="41"
+        font-family="Georgia, 'Times New Roman', 'Fraunces', serif"
+        font-size="23" font-weight="600" letter-spacing="0.2"
+        fill="#23402F">BLATURI DE LEMN</text>
+  <text x="86" y="64"
+        font-family="'Inter', Arial, Helvetica, sans-serif"
+        font-size="11" font-weight="600" letter-spacing="6.5"
+        fill="#C79A45">PREMIUM</text>
+</svg>

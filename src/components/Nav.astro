@@ -1,0 +1,96 @@
+---
+import { SITE, PHONES } from "../config";
+import PhoneIcon from "./PhoneIcon.astro";
+
+const primary = PHONES[0];
+---
+
+<header
+  id="site-nav"
+  class="fixed inset-x-0 top-0 z-30 transition-all duration-300 [transition-timing-function:var(--ease-out-quart)]"
+  data-scrolled="false"
+>
+  <div class="container-base flex items-center justify-between h-24 md:h-28 lg:h-32">
+    <!-- Logo -->
+    <a href="#sus" class="flex items-center min-w-0 nav-logo-link">
+      <img
+        src={SITE.logo}
+        alt={`${SITE.brand} — ${SITE.tagline}`}
+        class="nav-logo block h-11 sm:h-12 md:h-14 lg:h-16 w-auto select-none"
+        width="360"
+        height="88"
+        loading="eager"
+        decoding="async"
+      />
+    </a>
+
+    <!-- Single CTA -->
+    <a
+      href={`tel:${primary.tel}`}
+      class="nav-cta inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-300"
+      aria-label={`Sună la ${primary.value}`}
+    >
+      <PhoneIcon size={16} />
+      <span class="hidden sm:inline font-mono-tabular tracking-tight">{primary.value}</span>
+      <span class="sm:hidden">Sună-ne</span>
+    </a>
+  </div>
+</header>
+
+<style>
+  /* Over hero (default) — logo is green/silver, needs brightening on dark photo */
+  #site-nav {
+    background: transparent;
+    border-bottom: 1px solid transparent;
+  }
+  #site-nav .nav-logo {
+    /* Convert green logo to cream/white over the dark hero */
+    filter: brightness(0) invert(1) drop-shadow(0 2px 6px oklch(22% 0.045 150 / 0.4));
+    transition: filter 350ms var(--ease-out-quart);
+  }
+  #site-nav .nav-cta {
+    background: var(--color-gold);
+    color: var(--color-forest-deep);
+  }
+  #site-nav .nav-cta:hover {
+    background: var(--color-paper);
+    transform: translateY(-1px);
+  }
+
+  /* Scrolled — cream background, logo shows its real green/silver colors */
+  #site-nav[data-scrolled="true"] {
+    background: oklch(97% 0.014 85 / 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom-color: var(--color-rule);
+  }
+  #site-nav[data-scrolled="true"] .nav-logo {
+    filter: none;
+  }
+  #site-nav[data-scrolled="true"] .nav-cta {
+    background: var(--color-forest);
+    color: var(--color-paper);
+  }
+  #site-nav[data-scrolled="true"] .nav-cta:hover {
+    background: var(--color-forest-deep);
+    color: var(--color-gold);
+  }
+
+  /* Logo hover — subtle scale */
+  .nav-logo-link:hover .nav-logo {
+    transform: scale(1.03);
+  }
+  .nav-logo {
+    transition: filter 350ms var(--ease-out-quart), transform 350ms var(--ease-out-quart);
+  }
+</style>
+
+<script>
+  const nav = document.getElementById("site-nav");
+  if (nav) {
+    const onScroll = () => {
+      nav.setAttribute("data-scrolled", window.scrollY > 60 ? "true" : "false");
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+</script>

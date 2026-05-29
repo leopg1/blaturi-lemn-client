@@ -1,0 +1,69 @@
+---
+import { PHONES, SITE } from "../config";
+import PhoneIcon from "./PhoneIcon.astro";
+
+const primary = PHONES[0];
+---
+
+<section id="contact" class="section-pad relative bg-[var(--color-forest-deep)] text-[var(--color-paper)] overflow-hidden">
+  <div
+    class="pointer-events-none absolute inset-0"
+    aria-hidden="true"
+    style="background: radial-gradient(ellipse at 80% 15%, oklch(78% 0.13 80 / 0.22) 0%, transparent 55%);"
+  ></div>
+  <!-- Subtle vertical hairline accent -->
+  <div class="pointer-events-none absolute left-6 md:left-12 top-0 bottom-0 w-px bg-[var(--color-paper)]/8" aria-hidden="true"></div>
+
+  <div class="container-base relative z-10">
+    <div class="max-w-5xl mx-auto text-center reveal-heading">
+      <div class="font-mono-tabular text-xs uppercase tracking-[0.18em] text-[var(--color-gold)] mb-4">
+        09 &mdash; Sună-ne
+      </div>
+      <h2 class="text-display-xl text-[var(--color-paper)] mb-10 md:mb-14">
+        Sună-mă <span class="italic text-[var(--color-gold)]">direct</span>.
+      </h2>
+
+      <a
+        href={`tel:${primary.tel}`}
+        class="group inline-flex items-center gap-5 md:gap-7 hover:scale-[1.02] transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)]"
+      >
+        <span
+          class="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full bg-[var(--color-gold)] text-[var(--color-forest-deep)] flex items-center justify-center group-hover:bg-[var(--color-paper)] transition-colors phone-pulse"
+        >
+          <PhoneIcon size={28} />
+        </span>
+        <span
+          class="font-mono-tabular leading-none text-[var(--color-paper)] group-hover:text-[var(--color-gold)] transition-colors"
+          style="font-size: clamp(2.25rem, 5.5vw, 4.5rem);"
+        >
+          {primary.value}
+        </span>
+      </a>
+
+      <p class="mt-10 md:mt-14 text-[var(--color-paper)]/75 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal" style="transition-delay: 150ms;">
+        Răspund eu, <span class="text-[var(--color-paper)] font-medium">de luni până sâmbătă, 8:00 — 20:00</span>.
+        Spune-mi ce blat vrei — esență, dimensiuni, finisaj. Dacă mă prinzi în atelier, te sun înapoi în 15 minute.
+      </p>
+    </div>
+
+    <!-- Info row — 4 mini-cards, subtle, no form -->
+    <dl class="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6 md:gap-x-10 max-w-5xl mx-auto reveal" style="transition-delay: 250ms;">
+      <div>
+        <dt class="text-eyebrow text-[var(--color-gold)]/85 mb-2">Program</dt>
+        <dd class="text-[var(--color-paper)] text-sm md:text-base">Luni — Sâmbătă, 8 — 20</dd>
+      </div>
+      <div>
+        <dt class="text-eyebrow text-[var(--color-gold)]/85 mb-2">Livrare</dt>
+        <dd class="text-[var(--color-paper)] text-sm md:text-base">În toată România</dd>
+      </div>
+      <div>
+        <dt class="text-eyebrow text-[var(--color-gold)]/85 mb-2">Atelier</dt>
+        <dd class="text-[var(--color-paper)] text-sm md:text-base">{SITE.city}, jud. {SITE.county}</dd>
+      </div>
+      <div>
+        <dt class="text-eyebrow text-[var(--color-gold)]/85 mb-2">Material</dt>
+        <dd class="text-[var(--color-paper)] text-sm md:text-base">Lemn masiv — stejar, frasin, nuc</dd>
+      </div>
+    </dl>
+  </div>
+</section>

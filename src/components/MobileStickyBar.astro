@@ -1,0 +1,41 @@
+---
+import { PHONES } from "../config";
+import PhoneIcon from "./PhoneIcon.astro";
+const [primary] = PHONES;
+---
+
+<div
+  id="mobile-sticky"
+  class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[var(--color-forest-deep)] text-[var(--color-paper)] border-t border-[var(--color-paper)]/15 backdrop-blur-sm"
+  role="region"
+  aria-label="Sună-ne"
+  data-shown="false"
+>
+  <a
+    href={`tel:${primary.tel}`}
+    class="flex items-center justify-center gap-3 py-4 active:bg-[var(--color-gold)] active:text-[var(--color-forest-deep)] transition-colors"
+    aria-label={`Sună la ${primary.value}`}
+  >
+    <PhoneIcon size={18} class="text-[var(--color-gold)]" />
+    <span class="font-mono-tabular text-base font-semibold">{primary.value}</span>
+    <span class="font-mono-tabular text-[10px] uppercase tracking-[0.16em] text-[var(--color-paper)]/55 ml-2">Răspundem</span>
+  </a>
+</div>
+
+<script>
+  const bar = document.getElementById("mobile-sticky");
+  if (bar) {
+    let shown = false;
+    const onScroll = () => {
+      if (window.scrollY > 320 && !shown) {
+        bar.setAttribute("data-shown", "true");
+        shown = true;
+      } else if (window.scrollY < 80 && shown) {
+        bar.setAttribute("data-shown", "false");
+        shown = false;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+</script>

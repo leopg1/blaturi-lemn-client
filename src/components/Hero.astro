@@ -1,0 +1,120 @@
+---
+import { PHONES } from "../config";
+import PhoneIcon from "./PhoneIcon.astro";
+const primary = PHONES[0];
+---
+
+<section
+  id="sus"
+  class="hero-section relative isolate overflow-hidden text-[var(--color-paper)] flex items-center"
+>
+  <!-- Background photo with subtle scale-in -->
+  <div class="absolute inset-0 -z-10 hero-bg">
+    <img
+      src="/hero-blat.jpg"
+      alt=""
+      class="h-full w-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <!-- Warm overlay — forest deep, darker for legibility -->
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,oklch(22%_0.045_150/0.78)_0%,oklch(22%_0.045_150/0.7)_45%,oklch(22%_0.045_150/0.95)_100%)]"></div>
+    <!-- Left-side darker for H1 legibility -->
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,oklch(22%_0.045_150/0.55)_0%,oklch(22%_0.045_150/0.25)_45%,transparent_75%)]"></div>
+    <!-- Subtle gold glow top-right -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_15%,oklch(78%_0.13_80/0.18)_0%,transparent_55%)]"></div>
+  </div>
+
+  <div class="container-base w-full pt-24 md:pt-28 lg:pt-32 pb-20 md:pb-24 lg:pb-28">
+    <!-- H1 -->
+    <h1 class="hero-h1 text-display-xl max-w-[14ch] md:max-w-[18ch] text-[var(--color-paper)]" style="color: var(--color-paper);">
+      Blaturi din lemn masiv,
+      <span class="italic text-[var(--color-gold)]">lucrate la comandă</span>.
+    </h1>
+
+    <!-- Lead — short, plain Romanian -->
+    <p class="hero-lead mt-6 md:mt-8 text-lg md:text-xl text-[var(--color-paper)]/90 max-w-[58ch] leading-relaxed">
+      Stejar, frasin și nuc, uscat și lucrat în atelierul nostru. Blaturi de bucătărie,
+      mese live-edge și blaturi de baie — la dimensiunea ta, finisate cu ulei natural.
+      <span class="text-[var(--color-paper)] font-medium">Livrăm în toată România.</span>
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero-cta mt-8 md:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <a
+        href={`tel:${primary.tel}`}
+        class="inline-flex items-center justify-center gap-3 px-6 py-4 bg-[var(--color-gold)] text-[var(--color-forest-deep)] font-semibold hover:bg-[var(--color-paper)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_36px_-12px_oklch(78%_0.13_80/0.55)] rounded-full"
+      >
+        <PhoneIcon size={18} class="phone-pulse" />
+        <span class="font-mono-tabular">{primary.value}</span>
+      </a>
+      <a
+        href="#lucrari"
+        class="inline-flex items-center justify-center gap-2 px-6 py-4 border border-[var(--color-paper)]/40 text-[var(--color-paper)] font-medium hover:border-[var(--color-paper)] hover:bg-[var(--color-paper)]/10 transition-all duration-300 rounded-full"
+      >
+        Vezi lucrări
+        <span aria-hidden="true">↓</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Subtle scroll indicator -->
+  <div class="hero-scroll absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-[var(--color-paper)]/55 font-mono-tabular text-[10px] uppercase tracking-[0.18em]">
+    <span>Defilează</span>
+    <span class="w-px h-8 bg-[var(--color-gold)]/70 hero-scroll-line"></span>
+  </div>
+
+  <!-- Hero entrance animations + responsive height -->
+  <style>
+    .hero-section {
+      /* Mobile: full viewport (dynamic, handles address-bar collapse) */
+      min-height: 100vh;
+      min-height: 100svh;
+      min-height: 100dvh;
+    }
+    @media (min-width: 1024px) {
+      .hero-section {
+        /* Desktop: cap so it doesn't feel sparse on tall monitors */
+        min-height: min(94vh, 820px);
+      }
+    }
+    .hero-bg img {
+      transform: scale(1.06);
+      animation: hero-zoom 1800ms var(--ease-out-expo) 80ms forwards;
+    }
+    @keyframes hero-zoom {
+      to { transform: scale(1); }
+    }
+    .hero-h1, .hero-lead, .hero-cta, .hero-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: hero-rise 900ms var(--ease-out-expo) forwards;
+    }
+    .hero-h1     { animation-delay: 200ms; }
+    .hero-lead   { animation-delay: 380ms; }
+    .hero-cta    { animation-delay: 540ms; }
+    .hero-scroll { animation-delay: 900ms; }
+    @keyframes hero-rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-scroll-line {
+      transform-origin: top;
+      animation: scroll-line 2.2s var(--ease-out-quart) infinite;
+    }
+    @keyframes scroll-line {
+      0%   { transform: scaleY(0); opacity: 0.2; }
+      50%  { transform: scaleY(1); opacity: 1; }
+      100% { transform: scaleY(0); opacity: 0.2; transform-origin: bottom; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-bg img,
+      .hero-h1, .hero-lead, .hero-cta, .hero-scroll,
+      .hero-scroll-line {
+        animation: none !important;
+        opacity: 1;
+        transform: none !important;
+      }
+    }
+  </style>
+</section>
