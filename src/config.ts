@@ -19,12 +19,12 @@ export const PHONES = [
 
 // Ce facem — afișat scurt în hero, ca să se vadă din prima
 export const HERO_TAGS = [
-  "Debitări",
+  "Debitare bușteni",
   "Blaturi live-edge",
-  "Mese lemn masiv",
+  "Mese din lemn masiv",
   "Mese cu rășină",
-  "Fronturi mobilier",
-  "Vopsit",
+  "Fronturi de mobilă",
+  "Vopsit & lăcuit",
 ] as const;
 
 // Acoperire — orașe în care livrăm, afișate în marquee
@@ -38,39 +38,39 @@ export const COVERAGE_LOCATIONS = [
 export const SERVICES = [
   {
     n: "01",
-    title: "Debitări la comandă",
+    title: "Debitare bușteni",
     body:
-      "Tăiem bușteni în blaturi groase (slab-uri), la grosimea pe care o vrei. Ai un buștean? Ți-l tăiem și ți-l dăm gata de uscat.",
+      "Ai un buștean în curte sau în pădure? Îl tăiem noi în blaturi groase, la grosimea pe care o vrei tu, și ți-l dăm gata de pus la uscat. Tu spui cât de gros, noi tăiem drept.",
   },
   {
     n: "02",
     title: "Blaturi live-edge",
     body:
-      "Blaturi din lemn masiv cu margine naturală, uscate și gata de finisat. Vii, le vezi pe viu și alegi bucata care îți place.",
+      "Blaturi cu marginea lăsată naturală — adică exact forma copacului, nu tăiată dreaptă. Așa fiecare blat e unic. Vino la atelier, le vezi pe viu și alegi bucata care îți place.",
   },
   {
     n: "03",
     title: "Mese din lemn masiv",
     body:
-      "Mese de living sau de bucătărie dintr-o singură bucată de lemn. Picioare de metal sau de lemn — cum vrei tu.",
+      "Mese de living sau de bucătărie dintr-o bucată groasă de lemn adevărat — nu pal, nu folie. Picioare din lemn sau din metal, cum îți place ție.",
   },
   {
     n: "04",
     title: "Mese cu rășină epoxidică",
     body:
-      "Mese river: rășină turnată între două blaturi de lemn. Tu alegi culoarea rășinii, noi alegem lemnul potrivit.",
+      "Mese cu un „râu” de rășină colorată turnat între două bucăți de lemn (li se spune mese river). Rășina arată ca o sticlă lucioasă. Tu alegi culoarea, noi alegem lemnul potrivit.",
   },
   {
     n: "05",
-    title: "Fronturi de mobilier",
+    title: "Fronturi de mobilă",
     body:
-      "Fronturi din lemn masiv pentru bucătărie și mobilă, la dimensiunile tale. Cu noduri și fibră naturală, nu folie.",
+      "Fronturile sunt ușile și sertarele de la mobilă. Le facem din lemn adevărat, la dimensiunile tale — cu noduri și model natural, nu folie lipită.",
   },
   {
     n: "06",
-    title: "Vopsit și finisat",
+    title: "Vopsit și lăcuit",
     body:
-      "Vopsim și finisăm blaturi, fronturi și mese. Alegi culoarea și finisajul — mat, satinat sau lucios.",
+      "Vopsim și lăcuim blaturi, fronturi și mese. Tu alegi culoarea și cât de lucios să fie: mat (fără luciu), satinat (luciu blând) sau lucios.",
   },
 ] as const;
 
@@ -135,20 +135,20 @@ export const VIDEOS = [
   {
     src: "/video-1.mp4",
     poster: "/video-1.jpg",
-    title: "Debitare pe joagăr",
-    body: "Bușteanul devine blat",
+    title: "Tăiem bușteanul în blaturi",
+    body: "Dintr-un copac întreg",
   },
   {
     src: "/video-2.mp4",
     poster: "/video-2.jpg",
-    title: "Debitare la comandă",
-    body: "Slab dintr-un buștean întreg",
+    title: "Un blat dintr-un buștean",
+    body: "Tăiat drept, la grosime",
   },
   {
     src: "/video-3.mp4",
     poster: "/video-3.jpg",
-    title: "Tăiem direct din buștean",
-    body: "Blaturi la grosimea ta",
+    title: "Direct din buștean",
+    body: "La grosimea pe care o vrei",
   },
 ] as const;
 
@@ -193,7 +193,7 @@ export const PROCES = [
 export const FAQ = [
   {
     q: "Ce faceți, mai exact?",
-    a: "Patru lucruri: debitări (tăiem bușteni în blaturi), vindem blaturi live-edge gata de finisat, facem mese din lemn masiv și facem mese cu rășină epoxidică (river). Tot ce ține de lemn masiv și blaturi.",
+    a: "Tăiem bușteni în blaturi (asta se numește debitare), vindem blaturi cu margine naturală (live-edge), facem mese din lemn masiv și mese cu rășină, facem fronturi de mobilă (ușile și sertarele) și le vopsim. Pe scurt: tot ce ține de lemn masiv.",
   },
   {
     q: "Ce înseamnă blat live-edge?",

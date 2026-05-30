@@ -21,9 +21,9 @@ npm run preview      # servește dist/ pentru verificare
 |---|---|---|
 | — | **Hero** | Foto blat pe tot ecranul + cele 6 servicii ca „chips" gold (sar în ochi), telefon gigant, CTA |
 | 02 | **Blaturile noastre** | Galerie cu 4 blaturi/mese (poze reale ale clientului) |
-| 03 | **Din pădure în atelier** | 2 fotografii: bușteanul întreg + slab-ul proaspăt debitat |
-| 04 | **Ce facem** | 6 tile-uri: debitări · live-edge · mese masiv · mese cu rășină · fronturi mobilier · vopsit |
-| 05 | **Video** | 3 filmări verticale de la debitare (poster + tap-to-play, `preload="none"` = mobil-friendly) |
+| 03 | **Video** | 3 filmări verticale de la debitare (poster + tap-to-play, `preload="none"` = mobil-friendly) |
+| 04 | **Din pădure în atelier** | 2 fotografii: bușteanul întreg + slab-ul proaspăt debitat |
+| 05 | **Ce facem** | 6 tile-uri: debitări · live-edge · mese masiv · mese cu rășină · fronturi mobilier · vopsit |
 | 06 | **De ce noi** | 4 dovezi: 15 ani · 100% lemn masiv · 6 servicii · 10 ani garanție |
 | 07 | **Cum lucrăm** | 5 pași: ne spui → vii și alegi lemnul → ofertă → lucrăm → livrăm |
 | 08 | **Unde livrăm** | Marquee cu 18 orașe din toată țara |
