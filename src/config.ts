@@ -19,10 +19,12 @@ export const PHONES = [
 
 // Ce facem — afișat scurt în hero, ca să se vadă din prima
 export const HERO_TAGS = [
-  "Debitări la comandă",
+  "Debitări",
   "Blaturi live-edge",
-  "Mese din lemn masiv",
-  "Mese cu rășină epoxidică",
+  "Mese lemn masiv",
+  "Mese cu rășină",
+  "Fronturi mobilier",
+  "Vopsit",
 ] as const;
 
 // Acoperire — orașe în care livrăm, afișate în marquee
@@ -57,6 +59,18 @@ export const SERVICES = [
     title: "Mese cu rășină epoxidică",
     body:
       "Mese river: rășină turnată între două blaturi de lemn. Tu alegi culoarea rășinii, noi alegem lemnul potrivit.",
+  },
+  {
+    n: "05",
+    title: "Fronturi de mobilier",
+    body:
+      "Fronturi din lemn masiv pentru bucătărie și mobilă, la dimensiunile tale. Cu noduri și fibră naturală, nu folie.",
+  },
+  {
+    n: "06",
+    title: "Vopsit și finisat",
+    body:
+      "Vopsim și finisăm blaturi, fronturi și mese. Alegi culoarea și finisajul — mat, satinat sau lucios.",
   },
 ] as const;
 
@@ -116,11 +130,33 @@ export const ATELIER = [
   },
 ] as const;
 
+// Video — filmări reale de la debitare (poster = un cadru din clip)
+export const VIDEOS = [
+  {
+    src: "/video-1.mp4",
+    poster: "/video-1.jpg",
+    title: "Debitare pe joagăr",
+    body: "Bușteanul devine blat",
+  },
+  {
+    src: "/video-2.mp4",
+    poster: "/video-2.jpg",
+    title: "Debitare la comandă",
+    body: "Slab dintr-un buștean întreg",
+  },
+  {
+    src: "/video-3.mp4",
+    poster: "/video-3.jpg",
+    title: "Tăiem direct din buștean",
+    body: "Blaturi la grosimea ta",
+  },
+] as const;
+
 // De ce noi — 4 dovezi
 export const DOVEZI = [
   { num: "15", unit: "ani", label: "De când tăiem și lucrăm lemn" },
   { num: "100%", unit: "", label: "Lemn masiv — fără pal, fără MDF" },
-  { num: "4", unit: "servicii", label: "Debitări · blaturi · mese · rășină" },
+  { num: "6", unit: "servicii", label: "De la debitare la masa vopsită" },
   { num: "10", unit: "ani", label: "Garanție scrisă pe lucrare" },
 ] as const;
 
@@ -169,7 +205,15 @@ export const FAQ = [
   },
   {
     q: "Cât costă un blat sau o masă?",
-    a: "Depinde de mărime, de esența lemnului și de finisaj. Un blat live-edge pornește de la câteva sute de lei, o masă cu rășină costă mai mult. Spune-mi ce vrei și îți dau un preț clar, gratuit.",
+    a: "Depinde de mărime, de esența lemnului și de finisaj. Prețul se negociază — spune-mi ce vrei și ne înțelegem. Un blat live-edge pornește de la câteva sute de lei, o masă cu rășină costă mai mult. Estimarea e gratuită.",
+  },
+  {
+    q: "Ce dimensiuni au blaturile?",
+    a: "Le avem în diferite lungimi, lățimi și grosimi. Spune-mi pentru ce ai nevoie și îți zic ce am potrivit acum. Dacă vii cu bușteanul tău, îl tăiem la dimensiunea pe care o vrei.",
+  },
+  {
+    q: "Ce umiditate are lemnul?",
+    a: "Blaturile sunt în uscare naturală, cu umiditatea sub 40%. Îți spun la fiecare bucată cât are, ca să știi cât mai trebuie să stea până o poți finisa.",
   },
   {
     q: "Faceți mese cu rășină (epoxi)?",

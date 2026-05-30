@@ -1,0 +1,112 @@
+---
+import { VIDEOS } from "../config";
+---
+
+<section id="video" class="relative section-pad bg-[var(--color-forest-deep)] text-[var(--color-paper)] overflow-hidden">
+  <!-- Subtle gold radial atmosphere -->
+  <div
+    class="pointer-events-none absolute inset-0 -z-0"
+    aria-hidden="true"
+    style="background: radial-gradient(ellipse at 30% 25%, oklch(78% 0.13 80 / 0.12) 0%, transparent 60%);"
+  ></div>
+
+  <div class="container-base relative z-10">
+    <div class="grid lg:grid-cols-12 gap-10 items-end mb-12 lg:mb-16">
+      <div class="lg:col-span-7 reveal-heading">
+        <div class="font-mono-tabular text-xs uppercase tracking-[0.18em] text-[var(--color-gold)] mb-3">
+          05 &mdash; Video
+        </div>
+        <h2 class="text-display-l text-[var(--color-paper)]">
+          Vezi cum <span class="italic text-[var(--color-gold)]">debităm</span> un buștean.
+        </h2>
+      </div>
+      <div class="lg:col-span-4 lg:col-start-9 text-[var(--color-paper)]/75 leading-relaxed reveal" style="transition-delay: 150ms;">
+        Filmări reale de la debitare. Așa transformăm un buștean întreg în blaturi groase, la grosimea pe care o vrei.
+      </div>
+    </div>
+
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+      {VIDEOS.map((v, i) => (
+        <li class="reveal-scale" style={`transition-delay: ${i * 120}ms`}>
+          <figure class="video-card group relative bg-[var(--color-forest)] border border-[var(--color-paper)]/10 overflow-hidden">
+            <div class="relative aspect-[9/16]">
+              <video
+                class="absolute inset-0 w-full h-full object-cover bg-[var(--color-forest-deep)]"
+                src={v.src}
+                poster={v.poster}
+                preload="none"
+                playsinline
+                controls
+                aria-label={`${v.title} — ${v.body}`}
+                data-video
+              ></video>
+              <!-- Bottom gradient for caption legibility (over poster) -->
+              <div
+                class="video-gradient pointer-events-none absolute inset-x-0 bottom-0 h-2/5"
+                style="background: linear-gradient(180deg, transparent 0%, oklch(22% 0.045 150 / 0.85) 100%);"
+                aria-hidden="true"
+              ></div>
+              <!-- Play overlay (poster state) -->
+              <button
+                type="button"
+                class="video-play absolute inset-0 w-full h-full flex items-center justify-center text-[var(--color-paper)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-gold)]"
+                aria-label={`Pornește: ${v.title}`}
+                data-play
+              >
+                <span class="w-16 h-16 rounded-full bg-[var(--color-gold)] text-[var(--color-forest-deep)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
+                  <svg width="20" height="22" viewBox="0 0 20 22" fill="currentColor">
+                    <polygon points="0,0 0,22 20,11" />
+                  </svg>
+                </span>
+              </button>
+              <!-- Caption (poster state) -->
+              <figcaption class="video-cap absolute bottom-4 left-4 right-4 z-10 pointer-events-none">
+                <div class="font-display text-lg md:text-xl text-[var(--color-paper)]">
+                  {v.title}
+                </div>
+                <div class="font-mono-tabular text-[11px] uppercase tracking-[0.14em] text-[var(--color-paper)]/75 mt-1">
+                  №{String(i + 1).padStart(2, "0")} &middot; {v.body}
+                </div>
+              </figcaption>
+            </div>
+          </figure>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-8 text-sm font-mono-tabular uppercase tracking-[0.14em] text-[var(--color-paper)]/55">
+      Atinge un video ca să pornească
+    </p>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-play]").forEach((btn) => {
+    const card = btn.closest(".video-card");
+    if (!card) return;
+    const video = card.querySelector<HTMLVideoElement>("[data-video]");
+    if (!video) return;
+
+    // Reveal native controls + clean decorations once playing.
+    const enterPlaying = () => card.classList.add("is-playing");
+
+    btn.addEventListener("click", () => {
+      enterPlaying();
+      video.play().catch(() => {});
+    });
+    video.addEventListener("play", enterPlaying);
+  });
+</script>
+
+<style>
+  /* Once a video starts, hide the poster-state overlay/caption so native
+     controls are fully usable (seek, fullscreen, volume). */
+  .video-card.is-playing .video-play,
+  .video-card.is-playing .video-gradient,
+  .video-card.is-playing .video-cap {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 250ms var(--ease-out-quart);
+  }
+</style>

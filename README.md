@@ -15,19 +15,20 @@ npm run build        # generează dist/
 npm run preview      # servește dist/ pentru verificare
 ```
 
-## Structura site-ului (9 secțiuni)
+## Structura site-ului (10 secțiuni)
 
 | # | Secțiune | Ce conține |
 |---|---|---|
-| — | **Hero** | Foto blat pe tot ecranul + cele 4 servicii ca „chips" gold (sar în ochi), telefon gigant, CTA |
+| — | **Hero** | Foto blat pe tot ecranul + cele 6 servicii ca „chips" gold (sar în ochi), telefon gigant, CTA |
 | 02 | **Blaturile noastre** | Galerie cu 4 blaturi/mese (poze reale ale clientului) |
 | 03 | **Din pădure în atelier** | 2 fotografii: bușteanul întreg + slab-ul proaspăt debitat |
-| 04 | **Ce facem** | 4 tile-uri: debitări · blaturi live-edge · mese lemn masiv · mese cu rășină |
-| 05 | **De ce noi** | 4 dovezi: 15 ani · 100% lemn masiv · 4 servicii · 10 ani garanție |
-| 06 | **Cum lucrăm** | 5 pași: ne spui → vii și alegi lemnul → ofertă → lucrăm → livrăm |
-| 07 | **Unde livrăm** | Marquee cu 18 orașe din toată țara |
-| 08 | **Întrebări** | FAQ cu 8 răspunsuri (accordion) |
-| 09 | **Contact** | Telefon mare + program + info |
+| 04 | **Ce facem** | 6 tile-uri: debitări · live-edge · mese masiv · mese cu rășină · fronturi mobilier · vopsit |
+| 05 | **Video** | 3 filmări verticale de la debitare (poster + tap-to-play, `preload="none"` = mobil-friendly) |
+| 06 | **De ce noi** | 4 dovezi: 15 ani · 100% lemn masiv · 6 servicii · 10 ani garanție |
+| 07 | **Cum lucrăm** | 5 pași: ne spui → vii și alegi lemnul → ofertă → lucrăm → livrăm |
+| 08 | **Unde livrăm** | Marquee cu 18 orașe din toată țara |
+| 09 | **Întrebări** | FAQ cu 10 răspunsuri (accordion) |
+| 10 | **Contact** | Telefon mare + program + info |
 
 Plus: navbar fix cu CTA „Sună-ne", footer slim, bar fix-jos pe mobil după 320px scroll.
 
@@ -90,6 +91,19 @@ Pentru a adăuga sau înlocui:
 2. Recomandare: hero/blaturi sub ~400KB, optimizează cu [squoosh.app](https://squoosh.app/).
    Pozele de telefon (1200×1600) merg foarte bine așa cum sunt.
 
+## Video
+
+Cele 3 filmări (`public/video-1.mp4 … video-3.mp4`) sunt definite în `VIDEOS` din
+[src/config.ts](src/config.ts), cu poster (un cadru din clip). Se încarcă **doar la tap**
+(`preload="none"`), deci pagina rămâne ușoară pe mobil.
+
+Pentru a înlocui un video, recomandat să-l comprimi întâi (au fost reduse de la ~20MB la ~9MB):
+```bash
+ffmpeg -i input.mp4 -vf "scale=404:-2" -c:v libx264 -crf 31 -preset slow \
+  -c:a aac -b:a 80k -movflags +faststart public/video-1.mp4
+ffmpeg -ss 1.5 -i public/video-1.mp4 -frames:v 1 -q:v 4 public/video-1.jpg   # poster
+```
+
 ## Logo & favicon
 
 Logo-ul este SVG vectorial: [public/logo-blaturi.svg](public/logo-blaturi.svg) — emblemă cu trei
@@ -120,7 +134,8 @@ src/
     Hero.astro               ← foto cover + chips servicii + CTA telefon
     Lucrari.astro            ← 4 blaturi (galerie)
     Atelier.astro            ← 2 foto: buștean + slab debitat
-    Servicii.astro           ← 4 tile-uri cu icoane
+    Servicii.astro           ← 6 tile-uri cu icoane
+    Videos.astro             ← 3 video verticale (poster + tap-to-play)
     DeCeNoi.astro            ← 4 dovezi
     Proces.astro             ← 5 pași
     Acoperire.astro          ← marquee cu orașe
@@ -137,6 +152,8 @@ public/
   blat-figura.jpg            ← blat featured
   blaturi-pereche-1.jpg, blaturi-pereche-2.jpg  ← blaturi în galerie
   atelier-bustean.jpg, atelier-slab.jpg         ← buștean + slab debitat
+  video-1.mp4 → video-3.mp4    ← filmări debitare (comprimate pt. web)
+  video-1.jpg → video-3.jpg    ← postere pentru video-uri
 vercel.json                  ← config deploy + cache headers
 ```
 

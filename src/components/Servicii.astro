@@ -2,12 +2,14 @@
 import { SERVICES } from "../config";
 
 // Lucide-style icons inline. Stroke, accent applied per-tile.
-// 01 debitare (buștean tăiat în slab-uri) · 02 blat live-edge · 03 masă · 04 masă cu rășină (river)
+// 01 debitare · 02 blat live-edge · 03 masă · 04 masă cu rășină (river) · 05 fronturi mobilier · 06 vopsit
 const ICONS: Record<string, string> = {
   "01": `<circle cx="12" cy="12" r="8.5" /><path d="M4 9.5h16M4 14.5h16" />`,
   "02": `<path d="M5 6c-1.2 1.5-1.2 4 0 6s1.2 4 0 6" /><path d="M19 6c1.2 1.5 1.2 4 0 6s-1.2 4 0 6" /><path d="M5 6h14M5 18h14" />`,
   "03": `<rect x="3" y="7" width="18" height="3" rx="1" /><path d="M6 10v9M18 10v9" />`,
   "04": `<path d="M4 4v16M20 4v16" /><path d="M10 4c1.6 3-1.6 5 0 8s-1.6 5 0 8M14 4c-1.6 3 1.6 5 0 8s1.6 5 0 8" />`,
+  "05": `<rect x="4" y="3.5" width="7" height="17" rx="1" /><rect x="13" y="3.5" width="7" height="17" rx="1" /><path d="M8.5 9v3M15.5 9v3" />`,
+  "06": `<rect x="3" y="4.5" width="11" height="5" rx="1.5" /><path d="M14 7h4v4h-8v3" /><rect x="8.5" y="13.5" width="3" height="6.5" rx="1" />`,
 };
 ---
 
@@ -17,7 +19,7 @@ const ICONS: Record<string, string> = {
       <div class="lg:col-span-6 reveal-heading">
         <div class="text-eyebrow mb-3">04 &mdash; Ce facem</div>
         <h2 class="text-display-l">
-          Patru lucruri. <span class="italic text-[var(--color-forest)]">Toate din lemn masiv.</span>
+          De la buștean, <span class="italic text-[var(--color-forest)]">la masa finită.</span>
         </h2>
       </div>
       <div class="lg:col-span-5 lg:col-start-8 max-w-[58ch] reveal" style="transition-delay: 150ms;">
