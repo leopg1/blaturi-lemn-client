@@ -34,8 +34,10 @@ import { VIDEOS } from "../config";
                 class="absolute inset-0 w-full h-full object-cover bg-[var(--color-forest-deep)]"
                 src={v.src}
                 poster={v.poster}
-                preload="none"
+                preload="metadata"
                 playsinline
+                muted
+                loop
                 controls
                 aria-label={`${v.title} — ${v.body}`}
                 data-video
@@ -46,16 +48,18 @@ import { VIDEOS } from "../config";
                 style="background: linear-gradient(180deg, transparent 0%, oklch(22% 0.045 150 / 0.85) 100%);"
                 aria-hidden="true"
               ></div>
-              <!-- Play overlay (poster state) -->
+              <!-- Sound overlay — tap to unmute once autoplay has started -->
               <button
                 type="button"
                 class="video-play absolute inset-0 w-full h-full flex items-center justify-center text-[var(--color-paper)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-gold)]"
-                aria-label={`Pornește: ${v.title}`}
+                aria-label={`Pornește sunetul: ${v.title}`}
                 data-play
               >
-                <span class="w-16 h-16 rounded-full bg-[var(--color-gold)] text-[var(--color-forest-deep)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
-                  <svg width="20" height="22" viewBox="0 0 20 22" fill="currentColor">
-                    <polygon points="0,0 0,22 20,11" />
+                <!-- Sound-off icon (shown while muted/paused) -->
+                <span class="video-icon-sound w-14 h-14 rounded-full bg-[var(--color-gold)]/80 text-[var(--color-forest-deep)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 backdrop-blur-sm" aria-hidden="true">
+                  <svg width="22" height="20" viewBox="0 0 22 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="1,5 1,15 6,15 13,20 13,0 6,5" fill="currentColor" stroke="none"/>
+                    <line x1="17" y1="7" x2="21" y2="13"/><line x1="21" y1="7" x2="17" y2="13"/>
                   </svg>
                 </span>
               </button>
@@ -75,38 +79,102 @@ import { VIDEOS } from "../config";
     </ul>
 
     <p class="mt-8 text-sm font-mono-tabular uppercase tracking-[0.14em] text-[var(--color-paper)]/55">
-      Atinge un video ca să pornească
+      Atinge un video ca să pornești sunetul
     </p>
   </div>
 </section>
 
 <script>
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  type Ref = { card: Element; video: HTMLVideoElement; btn: HTMLElement; unmuted: boolean };
+  const refs: Ref[] = [];
+
   document.querySelectorAll<HTMLElement>("[data-play]").forEach((btn) => {
     const card = btn.closest(".video-card");
     if (!card) return;
     const video = card.querySelector<HTMLVideoElement>("[data-video]");
     if (!video) return;
-
-    // Reveal native controls + clean decorations once playing.
-    const enterPlaying = () => card.classList.add("is-playing");
-
-    btn.addEventListener("click", () => {
-      enterPlaying();
-      video.play().catch(() => {});
-    });
-    video.addEventListener("play", enterPlaying);
+    refs.push({ card, video, btn, unmuted: false });
   });
+
+  const enterPlaying = (ref: Ref) => {
+    ref.card.classList.add("is-playing");
+  };
+  const exitPlaying = (ref: Ref) => {
+    ref.card.classList.remove("is-playing");
+  };
+
+  // Tap: first tap unmutes, second tap pauses/plays
+  refs.forEach((ref) => {
+    ref.btn.addEventListener("click", () => {
+      if (!ref.video.paused && ref.video.muted) {
+        // Mute all others first
+        refs.forEach((other) => {
+          if (other !== ref) { other.video.muted = true; other.unmuted = false; }
+        });
+        ref.video.muted = false;
+        ref.unmuted = true;
+        return;
+      }
+      if (ref.video.paused) {
+        refs.forEach((other) => {
+          if (other !== ref) { other.video.muted = true; other.unmuted = false; }
+        });
+        ref.video.muted = false;
+        ref.unmuted = true;
+        ref.video.play().catch(() => {});
+      } else {
+        ref.video.pause();
+        ref.video.muted = true;
+        ref.unmuted = false;
+        exitPlaying(ref);
+      }
+    });
+    ref.video.addEventListener("play",  () => enterPlaying(ref));
+    ref.video.addEventListener("pause", () => { if (!ref.unmuted) exitPlaying(ref); });
+  });
+
+  // Autoplay on scroll — muted, loop, starts when 50% in viewport, pauses when out
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const ref = refs.find((r) => r.video === entry.target);
+        if (!ref) return;
+        if (entry.isIntersecting) {
+          ref.video.muted = true;
+          ref.video.loop = true;
+          ref.video.play().catch(() => {});
+        } else {
+          if (!ref.unmuted) {
+            ref.video.pause();
+            ref.video.currentTime = 0;
+            exitPlaying(ref);
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    refs.forEach((r) => io.observe(r.video));
+  }
 </script>
 
 <style>
-  /* Once a video starts, hide the poster-state overlay/caption so native
-     controls are fully usable (seek, fullscreen, volume). */
-  .video-card.is-playing .video-play,
+  /* Hide caption and gradient once video starts playing */
   .video-card.is-playing .video-gradient,
   .video-card.is-playing .video-cap {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 250ms var(--ease-out-quart);
+    transition: opacity 350ms var(--ease-out-quart);
+  }
+  /* Sound icon fades to subtle when video is playing muted */
+  .video-card.is-playing .video-icon-sound {
+    opacity: 0.55;
+    transform: scale(0.85);
+    transition: opacity 350ms var(--ease-out-quart), transform 350ms var(--ease-out-quart);
+  }
+  .video-card.is-playing .video-play:hover .video-icon-sound {
+    opacity: 0.9;
+    transform: scale(0.95);
   }
 </style>

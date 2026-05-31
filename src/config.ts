@@ -126,7 +126,7 @@ export const ATELIER = [
   {
     image: "/atelier-bustean-2.jpg",
     title: "Buștean gros, cu rădăcină",
-    body: "Din ăsta ies blaturi late",
+    body: "Din el ies blaturi late",
   },
   {
     image: "/atelier-slab.jpg",
