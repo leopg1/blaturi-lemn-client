@@ -7,8 +7,8 @@ export const SITE = {
   logo: "/logo-blaturi.svg",
   yearsExperience: 15,
   guaranteeYears: 10,
-  city: "Suceava",
-  county: "Suceava",
+  city: "Vărăști",
+  county: "Giurgiu",
   coverage: "livrăm în toată România",
   hoursLabel: "Răspundem la orice oră",
 } as const;
@@ -29,7 +29,7 @@ export const HERO_TAGS = [
 
 // Acoperire — orașe în care livrăm, afișate în marquee
 export const COVERAGE_LOCATIONS = [
-  "Suceava", "București", "Cluj-Napoca", "Timișoara", "Iași", "Brașov",
+  "Giurgiu", "București", "Cluj-Napoca", "Timișoara", "Iași", "Brașov",
   "Constanța", "Oradea", "Sibiu", "Craiova", "Galați", "Bacău",
   "Arad", "Ploiești", "Pitești", "Baia Mare", "Târgu Mureș", "Botoșani",
 ] as const;
@@ -234,6 +234,6 @@ export const FAQ = [
   },
   {
     q: "Pot veni să văd atelierul?",
-    a: "Sigur. Suntem în Suceava. Sună înainte să te aștept și îți arăt blaturile pe care le am acum. Cel mai bine alegi lemnul când îl vezi pe viu.",
+    a: "Sigur. Suntem în Vărăști, jud. Giurgiu. Sună înainte să te aștept și îți arăt blaturile pe care le am acum. Cel mai bine alegi lemnul când îl vezi pe viu.",
   },
 ] as const;
