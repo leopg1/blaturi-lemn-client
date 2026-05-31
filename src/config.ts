@@ -124,6 +124,11 @@ export const ATELIER = [
     body: "De aici pornește totul",
   },
   {
+    image: "/atelier-bustean-2.jpg",
+    title: "Buștean gros, cu rădăcină",
+    body: "Din ăsta ies blaturi late",
+  },
+  {
     image: "/atelier-slab.jpg",
     title: "Tăiat în blat",
     body: "Slab gros, proaspăt debitat",

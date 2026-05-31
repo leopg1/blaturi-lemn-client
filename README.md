@@ -22,7 +22,7 @@ npm run preview      # servește dist/ pentru verificare
 | — | **Hero** | Foto blat pe tot ecranul + cele 6 servicii ca „chips" gold (sar în ochi), telefon gigant, CTA |
 | 02 | **Blaturile noastre** | Galerie cu 4 blaturi/mese (poze reale ale clientului) |
 | 03 | **Video** | 3 filmări verticale de la debitare (poster + tap-to-play, `preload="none"` = mobil-friendly) |
-| 04 | **Din pădure în atelier** | 2 fotografii: bușteanul întreg + slab-ul proaspăt debitat |
+| 04 | **Din pădure în atelier** | 3 fotografii: bușteni întregi + slab-ul proaspăt debitat |
 | 05 | **Ce facem** | 6 tile-uri: debitări · live-edge · mese masiv · mese cu rășină · fronturi mobilier · vopsit |
 | 06 | **De ce noi** | 4 dovezi: 15 ani · 100% lemn masiv · 6 servicii · 10 ani garanție |
 | 07 | **Cum lucrăm** | 5 pași: ne spui → vii și alegi lemnul → ofertă → lucrăm → livrăm |
@@ -133,7 +133,7 @@ src/
     Nav.astro                ← header fix, transparent peste hero, solid la scroll
     Hero.astro               ← foto cover + chips servicii + CTA telefon
     Lucrari.astro            ← 4 blaturi (galerie)
-    Atelier.astro            ← 2 foto: buștean + slab debitat
+    Atelier.astro            ← 3 foto: bușteni + slab debitat
     Servicii.astro           ← 6 tile-uri cu icoane
     Videos.astro             ← 3 video verticale (poster + tap-to-play)
     DeCeNoi.astro            ← 4 dovezi
@@ -151,7 +151,7 @@ public/
   blat-burl.jpg              ← cover hero + blat featured
   blat-figura.jpg            ← blat featured
   blaturi-pereche-1.jpg, blaturi-pereche-2.jpg  ← blaturi în galerie
-  atelier-bustean.jpg, atelier-slab.jpg         ← buștean + slab debitat
+  atelier-bustean.jpg, atelier-bustean-2.jpg, atelier-slab.jpg  ← bușteni + slab
   video-1.mp4 → video-3.mp4    ← filmări debitare (comprimate pt. web)
   video-1.jpg → video-3.jpg    ← postere pentru video-uri
 vercel.json                  ← config deploy + cache headers
