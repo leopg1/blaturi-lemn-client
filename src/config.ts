@@ -14,8 +14,10 @@ export const SITE = {
 } as const;
 
 export const PHONES = [
-  { label: "Principal", value: "0745 332 118", tel: "+40745332118" },
+  { label: "Principal", value: "0767 836 105", tel: "+40767836105" },
 ] as const;
+
+export const EMAIL = "blaturipremium@gmail.com" as const;
 
 // Ce facem — afișat scurt în hero, ca să se vadă din prima
 export const HERO_TAGS = [
